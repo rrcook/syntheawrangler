@@ -1,0 +1,28 @@
+{
+  "name": "syntheawrangler",
+  "version": "1.0.0",
+  "description": "Personal project to develop Hospitalrun test files. Will be merged into HR project when appropriate.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rrcook/syntheawrangler.git"
+  },
+  "author": "Richard Cook",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rrcook/syntheawrangler/issues"
+  },
+  "homepage": "https://github.com/rrcook/syntheawrangler#readme",
+  "dependencies": {
+    "commander": "^4.0.0",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "@types/node": "^12.12.6",
+    "ts-node": "^8.4.1",
+    "typescript": "^3.7.2"
+  }
+}
