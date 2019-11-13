@@ -12,7 +12,7 @@
                 "<node_internals>/**"
             ],
             "program": "${workspaceFolder}/dist/index.js",
-            "args": ["-d", "/home/rrc/gitcode/synthea/output/fhir"],
+            "args": ["-d", "${env:HOME}/gitcode/synthea/output/fhir"],
             "outFiles": [
                 "${workspaceFolder}/**/*.js"
             ]
