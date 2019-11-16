@@ -21,6 +21,11 @@ program
     // process.exit();
   }
 
+  const fullOutputPath = path.join(program.directory, program.outputfile);
+
+  // delete file to get ready to read inputs
+  fs.unlinkSync(fullOutputPath);
+
   console.log(`hello world from ${program.description()} at ${process.cwd()}`);
   console.log(`The directory we\'re using is at ${program.directory}`);
 
@@ -34,19 +39,18 @@ program
   // All FHIR objects will be put in here.
   outputObject.docs = [];
 
-  fileList.forEach((fileName, i) => {
+  fileList.forEach((fileName, index) => {
     console.log(fileName);
-    const data = fs.readFileSync(program.directory + '/' + fileName, {encoding: 'utf8'});
+    const data = fs.readFileSync(path.join(program.directory, fileName), {encoding: 'utf8'});
     const jdata = JSON.parse(data);
 
     // Add couchdb related properties to the original object
-    jdata._id = 'id' + (i + 1);
+    // Letting couchcb generate id
+    // jdata._id = 'id' + (index + 1);
 
     outputObject.docs.push(jdata);
-  
   });
 
-  console.log("breakpoint");
   const outputText = JSON.stringify(outputObject, null, 2);
 
-  fs.writeFileSync(program.directory + '/' + program.outputfile, outputText, {encoding: 'utf8'});
+  fs.writeFileSync(fullOutputPath, outputText, {encoding: 'utf8'});
