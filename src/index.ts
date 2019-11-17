@@ -5,6 +5,11 @@ const program = require("commander");
 // This line works, above doesn't. Gotta love Typescript
 // import config = require("config");
 
+// Format for the output file
+type outputFormat = {
+  docs: any[];
+}
+
 // Run the Program
 
 // Capture command line options
@@ -33,11 +38,11 @@ program
   const fileList = fs.readdirSync(program.directory).filter((d) => d.endsWith('.json'));
 
   // Object to build to write out.
-  const outputObject:any = {};
-
   // "Global" properties of the object.
   // All FHIR objects will be put in here.
-  outputObject.docs = [];
+  const outputObject: outputFormat = {
+    docs: []
+  };
 
   fileList.forEach((fileName, index) => {
     console.log(fileName);
