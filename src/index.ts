@@ -28,11 +28,15 @@ program
 
   const fullOutputPath = path.join(program.directory, program.outputfile);
 
-  // delete file to get ready to read inputs
-  fs.unlinkSync(fullOutputPath);
-
-  console.log(`hello world from ${program.description()} at ${process.cwd()}`);
+  console.log(`hello from ${program.description()} at ${process.cwd()}`);
   console.log(`The directory we\'re using is at ${program.directory}`);
+
+  // delete file to get ready to read inputs
+  try {
+    fs.unlinkSync(fullOutputPath);
+  } catch(e) {
+    console.log(`The file ${program.outputfile} doesn't exist.`);
+  }
 
   // on MacOS, there can be a .DS_Store file. Might be others.
   const fileList = fs.readdirSync(program.directory).filter((d) => d.endsWith('.json'));
